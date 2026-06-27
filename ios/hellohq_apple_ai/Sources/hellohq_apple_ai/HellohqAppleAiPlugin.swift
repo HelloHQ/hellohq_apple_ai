@@ -73,6 +73,7 @@ final class AppleFoundationModelsStreamHandler: NSObject, FlutterStreamHandler {
                 eventSink events: @escaping FlutterEventSink) -> FlutterError? {
     let args = arguments as? [String: Any]
     let prompt = args?["prompt"] as? String ?? ""
+    let instructions = args?["instructions"] as? String
     guard #available(iOS 26.0, *) else {
       events(FlutterError(code: "unavailable",
                           message: "The on-device model requires iOS 26 or later.",
@@ -81,7 +82,9 @@ final class AppleFoundationModelsStreamHandler: NSObject, FlutterStreamHandler {
     }
     task = Task {
       do {
-        let session = LanguageModelSession()
+        let session = instructions == nil
+          ? LanguageModelSession()
+          : LanguageModelSession(instructions: instructions!)
         for try await partial in session.streamResponse(to: prompt) {
           if Task.isCancelled { return }
           events(String(describing: partial.content))
