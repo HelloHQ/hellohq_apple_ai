@@ -109,9 +109,17 @@ Cloud Compute tier is **not** wired up yet — see roadmap.)
 
 ## Roadmap
 
-- Private Cloud Compute tier (requires Apple entitlements).
+- **Private Cloud Compute (PCC) tier.** WWDC 2026 unified Foundation Models into
+  one Swift API spanning on-device → PCC → third-party clouds, shipping in
+  **iOS/macOS 27**; PCC is free of cloud API cost for App Store Small Business
+  Program members. This plugin currently targets the **iOS/macOS 26** on-device
+  model only. Adding a PCC option means building against the iOS 27 SDK and
+  routing requests through the new server tier — a clean extension of the
+  session-based API here, not a rewrite.
 - Structured / guided generation (`@Generable`) and tool calling.
-- On-device verification on iOS 26 hardware.
+- **On-device verification.** Run `example/` on real Apple-Intelligence hardware
+  (macOS 26+ / iOS 26+): `cd example && flutter run -d macos`, then exercise
+  Check availability / Respond / Stream. Native runtime can't be verified in CI.
 
 ## License
 
