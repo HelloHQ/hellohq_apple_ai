@@ -1,7 +1,8 @@
 name: hellohq_apple_ai
-description: "A new Flutter plugin project."
+description: "Flutter plugin for Apple Foundation Models (on-device + Private Cloud Compute) on macOS and iOS."
 version: 0.0.1
-homepage:
+homepage: "https://github.com/HelloHQ/hellohq_apple_ai"
+repository: "https://github.com/HelloHQ/hellohq_apple_ai"
 
 environment:
   sdk: ^3.12.0
